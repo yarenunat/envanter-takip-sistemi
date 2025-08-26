@@ -13,7 +13,6 @@ namespace WpfApp1.viewModel
         public ObservableCollection<EmployeeModel> Employees { get; set; }
         public ObservableCollection<string> CategoryList { get; set; }
         public ObservableCollection<string> DepartmentList { get; set; }
-        // RoleList özelliği kaldırıldı
 
         private EmployeeModel _selectedEmployee;
         public EmployeeModel SelectedEmployee
@@ -60,8 +59,6 @@ namespace WpfApp1.viewModel
             }
         }
 
-        // SelectedRole özelliği kaldırıldı
-
         // Arama metni: 'd' yazınca d ile başlayanlar listelenecek
         private string _searchText;
         public string SearchText
@@ -93,15 +90,12 @@ namespace WpfApp1.viewModel
         {
             CategoryList.Clear();
             DepartmentList.Clear();
-            // RoleList'in temizlenmesi kaldırıldı
-
+            
             foreach (var c in _repo.GetAllCategories()) CategoryList.Add(c);
             foreach (var d in _repo.GetAllDepartments()) DepartmentList.Add(d);
-            // GetAllRoles çağrısı kaldırıldı
 
             OnPropertyChanged(nameof(CategoryList));
             OnPropertyChanged(nameof(DepartmentList));
-            // RoleList'in PropertyChanged çağrısı kaldırıldı
         }
 
         public void LoadEmployees()
@@ -115,13 +109,10 @@ namespace WpfApp1.viewModel
             OnPropertyChanged(nameof(Employees));
         }
 
-        // Seçili filtreler + arama metni ile listeyi yeniler
         public void ApplyFilters()
         {
-            // GetEmployeesFiltered metodu artık 3 değil, 2 parametre alıyor.
             var list = _repo.GetEmployeesFiltered(SelectedCategory, SelectedDepartment);
 
-            // Arama: 'd' → FullName veya EmployeeId 'd' ile başlıyorsa
             var q = string.IsNullOrWhiteSpace(SearchText) ? null : SearchText.Trim();
             if (!string.IsNullOrEmpty(q))
             {
@@ -129,7 +120,6 @@ namespace WpfApp1.viewModel
                     (!string.IsNullOrEmpty(e.FullName) &&
                         e.FullName.StartsWith(q, StringComparison.OrdinalIgnoreCase))
                     ||
-                    // Sicil numarası ile arama eklendi
                     (!string.IsNullOrEmpty(e.RegistrationNumber) &&
                         e.RegistrationNumber.StartsWith(q, StringComparison.OrdinalIgnoreCase))
                 ).ToList();
@@ -166,7 +156,6 @@ namespace WpfApp1.viewModel
             LoadEmployees();
         }
 
-        // Kullanıcı adından çalışan seçimi (dokunulmadı)
         public void SelectEmployeeByUsername(string username)
         {
             if (string.IsNullOrWhiteSpace(username) || Employees == null)
@@ -174,7 +163,6 @@ namespace WpfApp1.viewModel
 
             var target = username.Trim();
 
-            // Sicil numarasına göre arama da eklendi
             var match = Employees.FirstOrDefault(e =>
                 string.Equals((e.FullName ?? string.Empty).Trim(),
                               target,
@@ -187,4 +175,5 @@ namespace WpfApp1.viewModel
                 SelectedEmployee = match;
         }
     }
+
 }
