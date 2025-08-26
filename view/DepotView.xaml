@@ -1,0 +1,234 @@
+﻿<UserControl x:Class="WpfApp1.view.DepotView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:vm="clr-namespace:WpfApp1.viewModel"
+             FontFamily="Montserrat"
+             SnapsToDevicePixels="True"
+             UseLayoutRounding="True">
+
+    <UserControl.DataContext>
+        <vm:DepotViewModel/>
+    </UserControl.DataContext>
+
+    <UserControl.Resources>
+        <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Border x:Name="Border"  
+                        Grid.ColumnSpan="2"
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="2"/>
+                <Path x:Name="Arrow"
+                      Grid.Column="1"
+                      Fill="#FFFFFF"
+                      HorizontalAlignment="Center"
+                      VerticalAlignment="Center"
+                      Data="M0,0 L4,4 8,0 Z"/>
+            </Grid>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ComboBoxTemplate" TargetType="ComboBox">
+            <Grid>
+                <ToggleButton x:Name="ToggleButton"
+                              Template="{StaticResource ComboBoxToggleButton}"
+                              Grid.Column="2"
+                              Focusable="false"
+                              Background="#C9113752"
+                              BorderBrush="#556677"
+                              BorderThickness="{TemplateBinding BorderThickness}"
+                              IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                              ClickMode="Press"/>
+                <ContentPresenter x:Name="ContentSite"
+                                  Content="{TemplateBinding SelectionBoxItem}"
+                                  ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                  ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                  Margin="6,2"
+                                  VerticalAlignment="Center"
+                                  HorizontalAlignment="Left"/>
+                <Popup x:Name="Popup"
+                       Placement="Bottom"
+                       IsOpen="{TemplateBinding IsDropDownOpen}"
+                       AllowsTransparency="True"
+                       Focusable="False"
+                       PopupAnimation="Slide">
+                    <Border x:Name="DropDownBorder"
+                            Background="#A1113752"
+                            BorderThickness="1"
+                            BorderBrush="#556677"
+                            CornerRadius="4">
+                        <ScrollViewer x:Name="DropDownScrollViewer">
+                            <Grid RenderOptions.ClearTypeHint="Enabled">
+                                <ItemsPresenter/>
+                            </Grid>
+                        </ScrollViewer>
+                    </Border>
+                </Popup>
+            </Grid>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ComboBoxItemTemplate" TargetType="ComboBoxItem">
+            <Border Background="{TemplateBinding Background}"  
+                    BorderBrush="{TemplateBinding BorderBrush}"  
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    Padding="6,2">
+                <ContentPresenter/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsHighlighted" Value="True">
+                    <Setter Property="Background" Value="#1E474A"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#0F3542"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Background" Value="#113752"/>
+            <Setter Property="Foreground" Value="#D5CFF5"/>
+            <Setter Property="BorderBrush" Value="#556677"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Template" Value="{StaticResource ComboBoxTemplate}"/>
+        </Style>
+
+        <Style TargetType="ComboBoxItem">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#D5CFF5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Template" Value="{StaticResource ComboBoxItemTemplate}"/>
+        </Style>
+
+        <Style x:Key="GlassButton" TargetType="Button">
+            <Setter Property="Background" Value="#1E474A"/>
+            <Setter Property="Foreground" Value="#089E97"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Padding" Value="8,4"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="GlassHeader" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="#113752"/>
+            <Setter Property="Foreground" Value="#D5CFF5"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="BorderBrush" Value="#556677"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
+            <Setter Property="Padding" Value="10,6"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="GlassRow" TargetType="DataGridRow">
+            <Setter Property="Foreground" Value="#D5CFF5"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#1E474A"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="#0F3542"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <DockPanel Margin="20" Background="Transparent">
+        <Border DockPanel.Dock="Top"
+                Background="#1A2E3B"
+                Padding="12"
+                CornerRadius="8"
+                Margin="0,0,0,12"
+                BorderBrush="#556677"
+                BorderThickness="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <TextBlock Text="Kategori:" VerticalAlignment="Center" Margin="0,0,8,0" Foreground="#D5CFF5"/>
+                <ComboBox ItemsSource="{Binding Categories}"
+                          SelectedItem="{Binding SelectedCategory}"
+                          MinWidth="180"
+                          Margin="0,0,15,0"
+                          FontSize="14"/>
+
+                <TextBlock Text="Durum:" VerticalAlignment="Center" Margin="0,0,8,0" Foreground="#D5CFF5"/>
+                <ComboBox ItemsSource="{Binding StatusFilters}"
+                          SelectedItem="{Binding SelectedStatus}"
+                          MinWidth="120"
+                          Margin="0,0,15,0"
+                          FontSize="14"/>
+
+                <Button Content="Yenile"
+                        Command="{Binding RefreshCommand}"
+                        Style="{StaticResource GlassButton}"
+                        Margin="0,0,15,0" Width="80"/>
+
+                <Button Content="Durum Güncelle"
+                        Command="{Binding UpdateStatusCommand}"
+                        Style="{StaticResource GlassButton}"
+                        Width="140"/>
+            </StackPanel>
+        </Border>
+
+        <Border Background="#1A2E3B"
+                CornerRadius="8"
+                BorderBrush="#556677"
+                BorderThickness="1">
+            <DataGrid ItemsSource="{Binding DepotItems}"
+                      SelectedItem="{Binding SelectedProduct, Mode=TwoWay}"
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      GridLinesVisibility="None"
+                      HeadersVisibility="Column"
+                      RowHeight="34"
+                      BorderThickness="0"
+                      SelectionMode="Single"
+                      CanUserResizeRows="False"
+                      Background="Transparent"
+                      ColumnHeaderStyle="{StaticResource GlassHeader}"
+                      RowStyle="{StaticResource GlassRow}">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="BARKOD" Binding="{Binding Barcode}" Width="1.5*" Foreground="#88A0D0"/>
+                    <DataGridTextColumn Header="ÜRÜN ADI" Binding="{Binding ProductName}" Width="2*" Foreground="#D5CFF5"/>
+                    <DataGridTextColumn Header="KATEGORİ" Binding="{Binding Category}" Width="1.5*" Foreground="#88A0D0"/>
+                    <DataGridTextColumn Header="DURUM" Binding="{Binding StatusName}" Width="1*">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="Foreground" Value="#88A0D0"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding StatusName}" Value="Mevcut">
+                                        <Setter Property="Foreground" Value="#3DB3B3"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding StatusName}" Value="Hurda">
+                                        <Setter Property="Foreground" Value="#FF6B6B"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding StatusName}" Value="Arızalı">
+                                        <Setter Property="Foreground" Value="#FFD166"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding StatusName}" Value="Bekleyen">
+                                        <Setter Property="Foreground" Value="#FFC300"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="SATIN ALIM TARİHİ"  
+                                        Binding="{Binding PurchaseDate, StringFormat='dd.MM.yyyy HH:mm'}"  
+                                        Width="1.5*" Foreground="#88A0D0"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Border>
+    </DockPanel>
+</UserControl>
