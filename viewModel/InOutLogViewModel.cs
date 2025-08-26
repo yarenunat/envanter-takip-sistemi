@@ -74,9 +74,7 @@ namespace WpfApp1.viewModel
             }
         }
 
-        /// <summary>
-        /// Log ekler. Eğer açıklama boşsa işlem tipine göre otomatik üretilir.
-        /// </summary>
+        
         public void AddLog(string actionType, string username, string personName = null, string customDescription = null)
         {
             string description = customDescription;
@@ -97,7 +95,6 @@ namespace WpfApp1.viewModel
                 }
             }
 
-            // DB'ye "Yapılan İşlem:Açıklama" formatında yaz
             string combinedAction = actionType + ":" + description;
 
             try
@@ -118,7 +115,6 @@ namespace WpfApp1.viewModel
                     }
                 }
 
-                // UI'ya anında ekle
                 InOutItems.Insert(0, new InOutLogItem
                 {
                     OperationType = actionType,
@@ -136,3 +132,4 @@ namespace WpfApp1.viewModel
         }
     }
 }
+
