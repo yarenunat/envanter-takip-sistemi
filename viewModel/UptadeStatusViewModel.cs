@@ -54,7 +54,6 @@ namespace WpfApp1.viewModel
             _repo = new DepotRepository();
             _product = product;
 
-            // Durum listesini al ve "Zimmetli" ekle
             var statusList = new List<string>(_repo.GetStatusNames());
             if (!statusList.Contains("Zimmetli"))
             {
@@ -112,7 +111,6 @@ namespace WpfApp1.viewModel
                     return;
                 }
 
-                // ** ZİMMETLEME UYARI KONTROLÜ BAŞLANGICI **
                 string[] uyariDurumlari = { "Arızalı", "Hurda", "Mevcut" };
                 if (uyariDurumlari.Contains(_product.StatusName))
                 {
@@ -123,21 +121,17 @@ namespace WpfApp1.viewModel
                     var result = MessageBox.Show(mesaj, "Uyarı", MessageBoxButton.YesNo, MessageBoxImage.Warning);
                     if (result == MessageBoxResult.No)
                     {
-                        // Kullanıcı işlemi iptal etti
+                    
                         return;
                     }
                 }
-                // ** ZİMMETLEME UYARI KONTROLÜ SONU **
-
-                // Ürünü zimmetle
+                
                 _repo.AssignProduct(_product.ProductID, SelectedEmployee.EmployeeId);
 
-                // Durumu otomatik olarak "Zimmetli" yap
                 _repo.UpdateProductStatus(_product.ProductID, "Zimmetli");
 
                 MessageBox.Show($"Ürün {SelectedEmployee.FullName} adlı personele zimmetlendi.", "Başarılı", MessageBoxButton.OK, MessageBoxImage.Information);
-
-                // Pencereyi kapat
+                
                 Application.Current.Windows.OfType<Window>()
                     .FirstOrDefault(w => w.DataContext == this)?.Close();
             }
@@ -157,4 +151,5 @@ namespace WpfApp1.viewModel
             }
         }
     }
+
 }
