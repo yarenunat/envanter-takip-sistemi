@@ -10,7 +10,7 @@ namespace WpfApp1.Repositories
         IEnumerable<EmployeeModel> GetEmployees();
         IEnumerable<string> GetAllDepartments();
         IEnumerable<string> GetAllRoles();
-        EmployeeModel AddEmployee(string fullName, string email, string departmentName, string registrationNumber); // ✨ Düzeltilen metot tanımı
+        EmployeeModel AddEmployee(string fullName, string email, string departmentName, string registrationNumber);
         void UpdateEmployee(EmployeeModel employee);
         Task DeleteEmployee(int employeeId);
         IEnumerable<AssignedItemModel> GetAssignedItemsByEmployeeId(int employeeId);
@@ -34,4 +34,5 @@ namespace WpfApp1.Repositories
         void UnassignProduct(int productId);
         void TransferAssignment(int newEmployeeId, int productId);
     }
+
 }
