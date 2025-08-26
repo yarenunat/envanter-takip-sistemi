@@ -8,6 +8,7 @@ namespace WpfApp1.Repositories
     {
         IEnumerable<DepotItem> GetDepotItems(string category = null, string status = null);
         IEnumerable<string> GetAllCategories();
-        IEnumerable<string> GetStatusNames(); // Yeni eklenen metod
+        IEnumerable<string> GetStatusNames();
     }
+
 }
