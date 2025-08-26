@@ -7,7 +7,6 @@
                 <ResourceDictionary Source="Styles/ButtonStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-            <!-- ✅ ScrollBar Stili -->
             <ControlTemplate x:Key="StyledScrollBar" TargetType="ScrollBar">
                 <Grid Background="Transparent">
                     <Track Name="PART_Track">
@@ -49,7 +48,6 @@
                 </Setter>
             </Style>
 
-            <!-- ✅ ScrollViewer Stili -->
             <Style x:Key="StyledScrollViewer" TargetType="ScrollViewer">
                 <Setter Property="Template">
                     <Setter.Value>
@@ -68,8 +66,7 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            <!-- ✅ ScrollBar Şablonu -->
-            
+
             <!-- Mevcut DataTemplate'ler -->
             <DataTemplate DataType="{x:Type view:HomeView}">
                 <view:HomeView/>
@@ -95,4 +92,5 @@
 
         </ResourceDictionary>
     </Application.Resources>
+
 </Application>
