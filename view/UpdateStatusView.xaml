@@ -17,7 +17,6 @@
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVisibilityConverter" />
         
-        <!-- ComboBox Stilleri (Ana uygulamayla aynı) -->
         <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="ToggleButton">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -132,7 +131,6 @@
             </Setter>
         </Style>
 
-        <!-- Aynı görünümde butonlar -->
         <Style x:Key="ActionButton" TargetType="Button" BasedOn="{StaticResource GlassButton}">
             <Setter Property="Background" Value="#113752"/>
             <Setter Property="Foreground" Value="#3DB3B3"/>
@@ -202,7 +200,6 @@
                           DisplayMemberPath="FullName"/>
             </StackPanel>
 
-            <!-- Butonlar - Aynı Görünümde -->
             <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,20,0,0" HorizontalAlignment="Center">
                 <Button Content="DURUM GÜNCELLE" 
                         Style="{StaticResource ActionButton}"
@@ -235,4 +232,5 @@
             </StackPanel>
         </Grid>
     </Border>
+
 </Window>
