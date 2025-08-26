@@ -12,7 +12,6 @@ namespace WpfApp1.Repositories
 {
     public class UserRepository : RepositoryBase, IUserRepository
     {
-        // ✅ EKLENEN KISIM
         public UserRepository() : base("MyDb") { }
 
         public void Add(UserModel userModel)
@@ -86,3 +85,4 @@ namespace WpfApp1.Repositories
         }
     }
 }
+
