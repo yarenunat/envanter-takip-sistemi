@@ -10,14 +10,11 @@ namespace WpfApp1.model
         public string Brand { get; set; }               // Marka
         public string Status { get; set; }              // Ürün Durumu (Mevcut, Zimmetli, Hurda vb.)
 
-        // Opsiyonel/eski alanlar
         public string Description { get; set; }         // Açıklama (opsiyonel)
         public decimal? Price { get; set; }             // Fiyat (opsiyonel)
         public int Stock { get; set; }                  // Stok (opsiyonel)
         public DateTime? PurchaseDate { get; set; }
-        public DateTime CreatedDate { get; set; }           // Eklenme/PurchaseDate
-
-        // Yeni alanlar (v_product0_list ile geliyor)
+        public DateTime CreatedDate { get; set; }       // Eklenme/PurchaseDate
         public string CategoryName { get; set; }        // Kategori
         public string AssignedTo { get; set; }          // Zimmetli kişi (varsa)
         public string AssignedDepartment { get; set; }  // Zimmetli kişinin departmanı (varsa)
@@ -25,4 +22,5 @@ namespace WpfApp1.model
 
         public string DisplayName => $"{Name} - {Barcode}";
     }
+
 }
