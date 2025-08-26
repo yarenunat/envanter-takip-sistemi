@@ -9,8 +9,7 @@ namespace WpfApp1.model
         public string RegistrationNumber { get; set; }
         public string Email { get; set; }
         public string DepartmentName { get; set; }
-        // RoleName özelliği kaldırıldığı için artık bu modelde bulunmuyor.
-
+        
         public ObservableCollection<AssignedItemModel> AssignedItems { get; set; }
 
         public EmployeeModel()
@@ -18,4 +17,5 @@ namespace WpfApp1.model
             AssignedItems = new ObservableCollection<AssignedItemModel>();
         }
     }
+
 }
