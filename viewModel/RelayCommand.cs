@@ -33,10 +33,10 @@ namespace WpfApp1.viewModel
             _execute(parameter);
         }
 
-        // Bu metot, UI'ın CanExecute durumunu kontrol etmesini tetikler
         public void RaiseCanExecuteChanged()
         {
             CommandManager.InvalidateRequerySuggested();
         }
     }
+
 }
