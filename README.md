@@ -35,5 +35,5 @@ Visual Studio 2022: Geliştirme ortamı.
 
 Sistemin videosunu izlemek için: https://youtu.be/p8ALkac9a-M
 
-![iki](https://github.com/user-attachments/assets/2ec282a1-fcde-4d52-8d20-264a80a50f2e)
+![ikiyeni](https://github.com/user-attachments/assets/2c66e3ee-d771-4172-b820-6b09773b2e90)
 ![sayfa4](https://github.com/user-attachments/assets/9fa3ebd8-5e8b-4cca-870d-c3429f40d0ce)
