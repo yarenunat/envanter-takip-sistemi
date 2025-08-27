@@ -1,6 +1,6 @@
 # Envanter Takip Sistemi
-![İLK](https://github.com/user-attachments/assets/a5ab6e95-5e8a-4ef3-a4ed-120c4f148039)
-Yaz stajım sırasında geliştirdiğim, Envanter Takip Sistemi: Şirketteki demirbaşların tek bir sistem üzerinden takip edilmesini sağlayan bir masaüstü programıdır. Kullanıcı girişi, barkod tarama, zimmet yönetimi ve stok takibi gibi fonksiyonlar barındırır.
+![ilk](https://github.com/user-attachments/assets/08dbbec4-6a7a-453f-aceb-a26fd4245de6)
+Envanter Takip Sistemi: Şirketteki demirbaşların tek bir sistem üzerinden takip edilmesini sağlayan bir masaüstü programıdır. Kullanıcı girişi, barkod tarama, zimmet yönetimi ve stok takibi gibi fonksiyonlar barındırır.
 Programın Sayfa ve İşlevleri:
 
 Giriş: Kullanıcı adı ve şifre doğrulaması yapılarak giriş sağlanır. Tüm işlemler veritabanı ile bağlantılıdır.
@@ -33,7 +33,9 @@ SQL Server Express & SQL Server Management Studio: Veritabanı yönetimi.
 Visual Studio 2022: Geliştirme ortamı.
 
 
-Sistemin videosunu izlemek için: https://youtu.be/p8ALkac9a-M
+Sistemin videosunu izlemek için: https://youtu.be/w3MgRHH09X8
+![ikiiyeni](https://github.com/user-attachments/assets/a722750e-fc05-4fa7-af82-2c329785b4f5)
+![sayfa4](https://github.com/user-attachments/assets/1d30068d-9b69-4321-b69c-87bfdd3127ff)
 
-![ikiyeni](https://github.com/user-attachments/assets/2c66e3ee-d771-4172-b820-6b09773b2e90)
-![sayfa4](https://github.com/user-attachments/assets/9fa3ebd8-5e8b-4cca-870d-c3429f40d0ce)
+
+
