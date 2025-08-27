@@ -1,6 +1,6 @@
 # Envanter Takip Sistemi
 ![İLK](https://github.com/user-attachments/assets/a5ab6e95-5e8a-4ef3-a4ed-120c4f148039)
-Feka Automotive’de yaz stajım sırasında geliştirdiğim, Envanter Takip Sistemi: Şirketteki demirbaşların tek bir sistem üzerinden takip edilmesini sağlayan bir masaüstü programıdır. Kullanıcı girişi, barkod tarama, zimmet yönetimi ve stok takibi gibi fonksiyonlar barındırır.
+Yaz stajım sırasında geliştirdiğim, Envanter Takip Sistemi: Şirketteki demirbaşların tek bir sistem üzerinden takip edilmesini sağlayan bir masaüstü programıdır. Kullanıcı girişi, barkod tarama, zimmet yönetimi ve stok takibi gibi fonksiyonlar barındırır.
 Programın Sayfa ve İşlevleri:
 
 Giriş: Kullanıcı adı ve şifre doğrulaması yapılarak giriş sağlanır. Tüm işlemler veritabanı ile bağlantılıdır.
